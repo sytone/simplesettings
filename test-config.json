@@ -1,0 +1,19 @@
+{
+  "simpleroot": "Test Value",
+  "complexroot": {
+    "int": 45436746765,
+    "date": "2021-01-22T10:01:55.8497122-08:00",
+    "enabled": true,
+    "null": null,
+    "supercomplex": {
+      "x": 1,
+      "y": 2
+    },
+    "nestedparam": "NestedNew"
+  },
+  "delsection": {},
+  "sectiontest": {
+    "valueone": "one",
+    "valuetwo": 2
+  }
+}

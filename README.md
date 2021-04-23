@@ -4,7 +4,8 @@
 
 # Simple Settings
 
-[![Contributors][contributors-shield]][contributors-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Issues][issues-shield]][issues-url][![MIT License][license-shield]][license-url][![LinkedIn][linkedin-shield]][linkedin-url]
+[![Contributors][contributors-shield]][contributors-url][![Forks][forks-shield]][forks-url][![Stargazers][stars-shield]][stars-url][![Issues][issues-shield]][issues-url][![MIT License][license-shield]][license-url]
+
 Simple setting solution for PowerShell and beyond!
 
 **[Explore the docs »](https://github.com/sytone/simplesettings)**
@@ -30,7 +31,6 @@ Simple setting solution for PowerShell and beyond!
 
 </details>
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Simple Settings Screen Shot][./images/screenshot.png]](https://github.com/sytone/simplesettings)
@@ -39,9 +39,9 @@ There are many great README templates available on GitHub, however, I didn't fin
 
 Here's why:
 
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+- Your time should be focused on creating something amazing. A project that solves a problem and helps others
+- You shouldn't be doing the same tasks over and over like creating a README from scratch
+- You should element DRY principles to the rest of your life :smile:
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
 
@@ -86,7 +86,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ## License
 
-Distributed under the GNU GPLv3 License. See `COPYING` for more information.
+Distributed under the GNU GPLv3 License. See `LICENSE` for more information.
 
 ## Contact
 
@@ -94,7 +94,6 @@ Jon Bullen - [@sytone](https://twitter.com/sytone)
 
 Project Link: [https://github.com/sytone/simplesettings](https://github.com/sytone/simplesettings)
 
-<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
 - [Img Shields](https://shields.io)
@@ -108,8 +107,7 @@ Project Link: [https://github.com/sytone/simplesettings](https://github.com/syto
 [stars-url]: https://github.com/sytone/simplesettings/stargazers
 [issues-shield]: https://img.shields.io/github/issues/sytone/simplesettings.svg?style=for-the-badge
 [issues-url]: https://github.com/sytone/simplesettings/issues
-[license-shield]: https://img.shields.io/github/license/sytone/simplesettings.svg?style=for-the-badge
-[license-url]: https://github.com/sytone/simplesettings/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/sytone/simplesettings?style=for-the-badge
+[license-url]: https://github.com/sytone/simplesettings/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/sytone
 [product-screenshot]: images/screenshot.png

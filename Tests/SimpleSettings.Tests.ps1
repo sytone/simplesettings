@@ -2,7 +2,7 @@
 # To run the tests just call ` Invoke-Pester` in this folder. 
 
 BeforeAll {
-  Remove-Module SimpleSettings -Force
+  Remove-Module SimpleSettings -Force -ErrorAction SilentlyContinue
   Import-Module $PSScriptRoot\..\SimpleSettings.psm1 -Force
   $testJson = "$PSScriptRoot\test-config.json"
   "{}" > $testJson

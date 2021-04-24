@@ -38,7 +38,7 @@ Update-ModuleManifest -Path $manifestPath -ModuleVersion $SemVer -FunctionsToExp
 
 # Create new markdown and XML help files
 Write-Host "Building new function documentation" -ForegroundColor Yellow
-Import-Module -Name "$PSScriptRoot\" -Force
+Import-Module -Name "$PSScriptRoot\$moduleName.psm1" -Force
 Get-Module $moduleName
 Write-Host "Updating markdown based help" -ForegroundColor Yellow
 New-MarkdownHelp -Module $moduleName -OutputFolder .\docs -ErrorAction SilentlyContinue

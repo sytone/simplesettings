@@ -37,7 +37,12 @@ jobs:
     - name: Build Module
       run: |
         ./build.ps1
-      shell: pwsh      
+      shell: pwsh     
+      
+    - name: Test Module
+      run: |
+        ./test.ps1
+      shell: pwsh       
 
     - name: Publishing
       run: |

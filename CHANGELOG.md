@@ -1,30 +1,18 @@
-### [FEATURE] Add post-commit hook (HEAD -> main)
->Fri, 23 Apr 2021 16:45:04 -0700
+# Changelog
 
->Author: sytone (github@sytone.com)
+All notable changes to this project will be documented in this file.
 
->Commiter: sytone (github@sytone.com)
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
 
+## [1.0.0] - 2021-04-23
 
+### Added
 
-### [FEATURE] Add build script
->Fri, 23 Apr 2021 16:34:04 -0700
+- Local version added to github
 
->Author: sytone (github@sytone.com)
+[unreleased]: https://github.com/olivierlacan/simplesettings/compare/v1.0.0...HEAD
 
->Commiter: sytone (github@sytone.com)
-
-
-
-
-### Current version of Simple Settings PowerShell module (origin/main)
->Fri, 23 Apr 2021 15:31:09 -0700
-
->Author: sytone (github@sytone.com)
-
->Commiter: sytone (github@sytone.com)
-
-
-
-
+[1.0.0]: https://github.com/sytone/simplesettings/releases/tag/v1.0.0

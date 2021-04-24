@@ -96,7 +96,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Authoring','Build','Development','BestPractices'
+        Tags = 'Configuration'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/sytone/simplesettings/blob/master/LICENSE'
@@ -105,13 +105,10 @@ PrivateData = @{
         ProjectUri = 'https://github.com/sytone/simplesettings'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://github.com/sytone/simplesettings/blob/resources/ModuleBuilder.png?raw=true'
+        IconUri = 'https://github.com/sytone/simplesettings/blob/master/images/settings_icon.png?raw=true'
 
         # ReleaseNotes of this module
-        ReleaseNotes = '
-            Inital release.
-            -
-            '
+        ReleaseNotes = 'Inital release.'
 
         # Prerelease string of this module
         Prerelease = 'beta'

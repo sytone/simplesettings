@@ -27,8 +27,9 @@ Write-Output "New Version: $SemVer"
 # Update the manifest with the new version value and fix the weird string replace bug
 $functionList = ((Get-ChildItem -Path "$PSScriptRoot\Public").BaseName)
 $currentManifest = Import-PowerShellDataFile $manifestPath
+$copyright = "Copyright $(Get-Date -Format "yyyy") $($currentManifest.Author)"
 
-Update-ModuleManifest -Path $manifestPath -ModuleVersion $SemVer -FunctionsToExport $functionList
+Update-ModuleManifest -Path $manifestPath -ModuleVersion $SemVer -FunctionsToExport $functionList -Copyright $copyright
 (Get-Content -Path $manifestPath) -replace "PSGet_$moduleName", $moduleName | Set-Content -Path $manifestPath
 (Get-Content -Path $manifestPath) -replace 'NewManifest', $moduleName | Set-Content -Path $manifestPath
 (Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force

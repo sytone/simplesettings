@@ -3,8 +3,8 @@
 
 BeforeAll {
   Remove-Module SimpleSettings -Force
-  Import-Module .\SimpleSettings.psm1 -Force
-  $testJson = ".\test-config.json"
+  Import-Module $PSScriptRoot\..\SimpleSettings.psm1 -Force
+  $testJson = "$PSScriptRoot\test-config.json"
   "{}" > $testJson
   Start-Sleep -Seconds 1
 

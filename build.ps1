@@ -18,8 +18,8 @@ Write-Host "Validating Manifest..."
 $manifest = Test-ModuleManifest -Path $manifestPath
 
 Write-Host "Updating Version..."
-if ($SemVer = gitversion -showvariable SemVer) {
-    $null = $PSBoundParameters.Add("SemVer", $SemVer)
+if (-not $SemVer) {
+    $SemVer =  gitversion -showvariable SemVer
 }
 Write-Output "Old Version: $($manifest.Version)"
 Write-Output "New Version: $SemVer"
@@ -47,22 +47,6 @@ Write-Host "Building new xml file for help" -ForegroundColor Yellow
 New-ExternalHelp -Path "$PSScriptRoot\docs" -OutputPath "$PSScriptRoot\en-US\" -Force
 
 return
-# Publish the new version to the PowerShell Gallery
-Try {
-    # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
-    $PM = @{
-        Path        = '.\'
-        NuGetApiKey = $env:NuGetApiKey
-        ErrorAction = 'Stop'
-    }
-    Publish-Module @PM
-    Write-Host "$moduleName PowerShell Module version $SemVer published to the PowerShell Gallery." -ForegroundColor Cyan
-}
-Catch {
-    # Sad panda; it broke
-    Write-Warning "Publishing update $SemVer to the PowerShell Gallery failed."
-    throw $_
-}
 
 # Publish the new version back to Master on GitHub
 Try {

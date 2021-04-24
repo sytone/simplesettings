@@ -2,13 +2,13 @@
 
 name: CI
 
-# Controls when the action will run. Triggers the workflow on push or pull request 
+# Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,36 +19,37 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
 
-    - name: List Package Providers
-      run: |
-        Get-PackageProvider -ListAvailable
-      shell: pwsh
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.7
+        with:
+          versionSpec: "5.x"
 
-    - name: Install Modules
-      run: |
-        Install-Module -Name Pester -Force
-        Install-Module -Name posh-git -Force
-        Install-Module -Name platyPS -Force
-      shell: pwsh
+      - name: List Package Providers
+        run: |
+          Get-PackageProvider -ListAvailable
+        shell: pwsh
 
-    - name: Build Module
-      run: |
-        ./build.ps1
-      shell: pwsh     
-      
-    - name: Test Module
-      run: |
-        ./test.ps1
-      shell: pwsh       
+      - name: Install Modules
+        run: |
+          Install-Module -Name Pester -Force
+          Install-Module -Name posh-git -Force
+          Install-Module -Name platyPS -Force
+        shell: pwsh
 
-    - name: Publishing
-      run: |
-        Publish-Module -Path .\ -NuGetApiKey ${{ secrets.POWERSHELLGALLERY }}
-      shell: pwsh
+      - name: Build Module
+        run: |
+          ./build.ps1
+        shell: pwsh
 
+      - name: Test Module
+        run: |
+          ./test.ps1
+        shell: pwsh
 
-      
-
+      - name: Publishing
+        run: |
+          Publish-Module -Path .\ -NuGetApiKey ${{ secrets.POWERSHELLGALLERY }}
+        shell: pwsh

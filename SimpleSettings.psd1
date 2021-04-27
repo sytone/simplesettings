@@ -33,7 +33,7 @@ Copyright = 'Copyright 2021 Jon Bullen'
 Description = 'Simple setting solution for PowerShell and beyond!'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '7.1.0'
+PowerShellVersion = '5.1.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''

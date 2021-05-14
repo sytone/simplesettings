@@ -5,11 +5,19 @@ $TestFile = "TestResults_PS$PSVersion`_$TimeStamp.xml"
 Set-Location $PSScriptRoot
 
 "`n`tSTATUS: Testing with PowerShell $PSVersion`n"
-    
+
+
 Import-Module Pester -force
-Invoke-Pester -Path "$PSScriptRoot\Tests" -OutputFormat NUnitXml -OutputFile "$PSScriptRoot\$TestFile" -PassThru |
+
+$config = [PesterConfiguration]::Default
+$config.Run.Path = "$PSScriptRoot\Tests"
+$config.Output.Verbosity = "Detailed"
+$config.Run.PassThru = $true
+$config.TestResult.OutputFormat = "NUnitXml"
+$config.TestResult.OutputPath = "$PSScriptRoot\$TestFile"
+
+Invoke-Pester -Configuration $config |
 Export-Clixml -Path "$PSScriptRoot\PesterResults_PS$PSVersion`_$Timestamp.xml"
-        
 
 $AllFiles = Get-ChildItem -Path $PSScriptRoot\PesterResults*.xml | Select-Object -ExpandProperty FullName
 "`n`tSTATUS: Finalizing results`n"
@@ -17,7 +25,7 @@ $AllFiles = Get-ChildItem -Path $PSScriptRoot\PesterResults*.xml | Select-Object
 
 #What failed?
 $Results = @( Get-ChildItem -Path "$PSScriptRoot\PesterResults_PS*.xml" | Import-Clixml )
-            
+
 $FailedCount = $Results |
 Select-Object -ExpandProperty FailedCount |
 Measure-Object -Sum |

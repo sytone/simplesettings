@@ -1,3 +1,4 @@
 PesterResults*.xml
 TestResults*.xml
 Tests/test-config.*
+/publish/**/*

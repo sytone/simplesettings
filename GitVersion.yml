@@ -1,5 +1,4 @@
 mode: Mainline
-next-version: 1.0.0
 branches:
   main:
     increment: Patch
@@ -10,5 +9,5 @@ branches:
     increment: Patch
     regex: .*?/
     source-branches:
-    - main
-    - features
+      - main
+      - features

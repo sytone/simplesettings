@@ -1,3 +1,9 @@
 {
-    "moduleName":"SimpleSettings"
+    "ModuleName": "SimpleSettings",
+    "Author": "Jon Bullen",
+    "CompanyName": "Sytone Inc.",
+    "Description": "Simple setting solution for PowerShell and beyond!",
+    "LicenseUri": "https://github.com/sytone/simplesettings/blob/master/LICENSE",
+    "ProjectUri": "https://github.com/sytone/simplesettings",
+    "IconUri": "https://github.com/sytone/simplesettings/blob/master/images/settings_icon.png?raw=true"
 }

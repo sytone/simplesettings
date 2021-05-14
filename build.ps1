@@ -107,7 +107,7 @@ Copy-Item -Path $PSScriptRoot/$moduleName.psm1 -Destination $PSScriptRoot/publis
 Copy-Item -Path $PSScriptRoot/README.md -Destination $PSScriptRoot/publish/$moduleName/ -Recurse
 Copy-Item -Path $PSScriptRoot/LICENSE -Destination $PSScriptRoot/publish/$moduleName/ -Recurse
 
-if (Get-Command -Name "Get-SimpleSetting" -and $Publish) {
+if ((Get-Command -Name "Get-SimpleSetting") -and $Publish) {
     $publishKey = Get-SimpleSetting -Section "PowerShellGallery" -Name "DefaultApiKey"
     Publish-Module -Path "$PSScriptRoot/publish/$moduleName" -NuGetApiKey $publishKey
 }

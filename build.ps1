@@ -95,7 +95,8 @@ Write-Information "Building new xml file for help"
 New-ExternalHelp -Path "$PSScriptRoot\docs" -OutputPath "$PSScriptRoot\en-US\" -Force
 
 # Package for Publish
-Get-ChildItem $PSScriptRoot/publish -Recurse -File | Remove-Item -Force -Recurse
+Get-ChildItem "$PSScriptRoot/publish" -Recurse -File | Remove-Item -Force -Recurse
+Get-ChildItem $PSScriptRoot/publish/$moduleName/ -Recurse -Directory | Remove-Item -Force -Recurse
 Get-ChildItem $PSScriptRoot/publish -Recurse -Directory | Remove-Item -Force -Recurse
 New-Item -Path $PSScriptRoot/publish/$moduleName -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 Copy-Item -Path $PSScriptRoot/docs -Destination $PSScriptRoot/publish/$moduleName/ -Recurse

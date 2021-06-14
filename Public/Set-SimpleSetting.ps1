@@ -9,9 +9,11 @@ function Set-SimpleSetting {
         [Parameter()]
         [Object] $Value,
         [Parameter()]
-        [String] $ConfigFile = $null
-    )    
-    
+        [String] $ConfigFile = $null,
+        [Parameter()]
+        [Switch] $DisableConfigurationBackup
+    )
+
     $configuration = Get-SettingsAsObject -ConfigFile $ConfigFile
 
     $output = $configuration;
@@ -29,5 +31,10 @@ function Set-SimpleSetting {
     else {
         $output | Add-Member -NotePropertyName $Name -NotePropertyValue $Value -Force
     }
-    Set-SettingsAsObject -SettingsObject $configuration -ConfigFile $ConfigFile
+    if($DisableConfigurationBackup) {
+        Set-SettingsAsObject -SettingsObject $configuration -ConfigFile $ConfigFile -DisableConfigurationBackup
+    } else
+    {
+        Set-SettingsAsObject -SettingsObject $configuration -ConfigFile $ConfigFile
+    }
 }

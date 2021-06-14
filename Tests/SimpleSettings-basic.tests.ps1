@@ -1,5 +1,5 @@
 
-$moduleName = "DevOpsCommands"
+$moduleName = "SimpleSettings"
 
 Describe "General project validation: $moduleName" {
     Context "Validate the module files" {
@@ -20,7 +20,7 @@ Describe "General project validation: $moduleName" {
         }
 
         It 'Passes Test-ModuleManifest' {
-            $ModuleManifestName = 'DevOpsCommands.psd1'
+            $ModuleManifestName = "SimpleSettings.psd1"
             $ModuleManifestPath = Resolve-Path "$PSScriptRoot\..\$ModuleManifestName"
             Test-ModuleManifest -Path $ModuleManifestPath | Should -Not -BeNullOrEmpty
             $? | Should -Be $true

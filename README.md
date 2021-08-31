@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo](./images/settings_icon.png "Logo")
+![Logo.](./images/settings_icon.png "Logo")
 
 # Simple Settings
 
@@ -33,7 +33,7 @@ Simple setting solution for PowerShell and beyond!
 
 ## About The Project
 
-[![Simple Settings Screen Shot][./images/screenshot.png]](https://github.com/sytone/simplesettings)
+[![Simple Settings Screen Shot.][./images/screenshot.png]](https://github.com/sytone/simplesettings)
 
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -49,7 +49,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 
 ### Built With
 
-- [PowerShell Core](https://docs.microsoft.com/en-us/powershell/)
+- [PowerShell Core](https://docs.microsoft.com/powershell/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
 ## Getting Started

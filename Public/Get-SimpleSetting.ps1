@@ -8,11 +8,14 @@ function Get-SimpleSetting {
         [Parameter()]
         [Object] $DefaultValue,
         [Parameter()]
-        [String] $ConfigFile = $null
+        [String] $ConfigFile = $null,
+        [switch] $MachineSpecific,
+        [switch] $AsJson
     )
 
+    $settingsOutput = @{}
     $configuration = Get-SettingsAsObject -ConfigFile $ConfigFile
-    
+
     Write-Verbose -Message "output '$($configuration | ConvertTo-Json -Compress -Depth 10)'"
 
     $sectionExists = $null -ne $configuration.$Section
@@ -20,22 +23,47 @@ function Get-SimpleSetting {
     $nameExists = $null -ne $configuration.$Name
 
     if ($Section -eq "" -and $Name -eq "") {
-        return $configuration
+        $settingsOutput = $configuration
+        if($AsJson) {
+            return ($settingsOutput | ConvertTo-Json)
+        } else {
+            return $settingsOutput
+        }
     }
 
     #Name not found, section if Name = ""?
     if ($sectionExists -and $Name -eq "") {
-        return $configuration.$Section
+        $settingsOutput = $configuration.$Section
+        if($AsJson) {
+            return ($settingsOutput | ConvertTo-Json)
+        } else {
+            return $settingsOutput
+        }
     }
 
 
     if ($sectionNameExists) {
-        return $configuration.$Section.$Name
+        $settingsOutput = $configuration.$Section.$Name
+        if($AsJson) {
+            return ($settingsOutput | ConvertTo-Json)
+        } else {
+            return $settingsOutput
+        }
     }
 
     if ($nameExists) {
-        return $configuration.$Name
+        $settingsOutput = $configuration.$Name
+        if($AsJson) {
+            return ($settingsOutput | ConvertTo-Json)
+        } else {
+            return $settingsOutput
+        }
     }
 
-    return $DefaultValue
+    $settingsOutput = $DefaultValue
+    if($AsJson) {
+        return ($settingsOutput | ConvertTo-Json)
+    } else {
+        return $settingsOutput
+    }
 }

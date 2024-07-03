@@ -36,6 +36,7 @@ function Set-SimpleSettingConfigurationFile {
     }
 
     if (-not (Test-Path $env:SIMPLESETTINGS_CONFIG_FILE)) {
+        New-Item -Path $env:SIMPLESETTINGS_CONFIG_FILE -ItemType File -Force
         "{}" | Set-Content $env:SIMPLESETTINGS_CONFIG_FILE
     }
 

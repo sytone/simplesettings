@@ -8,53 +8,69 @@ schema: 2.0.0
 # Get-SimpleSettingConfigurationFile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get the configuration file path for SimpleSettings.
 
 ## SYNTAX
 
 ```
-Get-SimpleSettingConfigurationFile [[-override] <Object>] [<CommonParameters>]
+Get-SimpleSettingConfigurationFile [[-Path] <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get the configuration file path for SimpleSettings.
+The configuration file is a JSON file that contains the settings you use in PowerShell scripts.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
+```
+Get-SimpleSettingConfigurationFile -Path "C:\MySettings.json"
 ```
 
-{{ Add example description here }}
+This will get the configuration file path for SimpleSettings.
+If the Path is not provided it will use the default configuration file path.
 
 ## PARAMETERS
 
-### -override
-{{ Fill override Description }}
+### -Path
+The path to the settings file.
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: override
 
 Required: False
-Position: 0
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
-
 ## OUTPUTS
 
-### System.Object
+### String
 ## NOTES
 
 ## RELATED LINKS

@@ -5,35 +5,35 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-SimpleSetting
+# Set-SimpleSettingConfigurationFile
 
 ## SYNOPSIS
-Remove a setting from the settings file.
+Set the configuration file path for SimpleSettings.
 
 ## SYNTAX
 
 ```
-Remove-SimpleSetting [-Name] <String> [[-Section] <String>] [[-ConfigFile] <String>] [-MachineSpecific]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-SimpleSettingConfigurationFile [-Path] <String> [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Remove a setting from the settings file.
-The settings file is a JSON file that contains the settings you use in PowerShell scripts.
+Set the configuration file path for SimpleSettings.
+The configuration file is a JSON file that contains the settings you use in PowerShell scripts.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-Remove-SimpleSetting -Name "MySetting" -Section "MySection" -ConfigFile "C:\MySettings.json"
+Set-SimpleSettingConfigurationFile -Path "C:\MySettings.json"
 ```
 
-This will remove the setting "MySetting" from the section "MySection" in the settings file "C:\MySettings.json".
+This will set the configuration file path for SimpleSettings to "C:\MySettings.json".
 
 ## PARAMETERS
 
-### -Name
-The name of the setting you want to remove.
+### -Path
+The path to the settings file.
 
 ```yaml
 Type: String
@@ -43,52 +43,6 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Section
-The section of the setting you want to remove.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ConfigFile
-The path to the settings file.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MachineSpecific
-If the setting is machine specific.
-It will look for a value in the configuration using the name prefixed with the machine name.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

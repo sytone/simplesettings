@@ -6,6 +6,7 @@ $Classes = @( Get-ChildItem -Path $PSScriptRoot\Classes\*.ps1 -ErrorAction Silen
 # Dot source the files
 Foreach($import in @($Public + $Private + $Classes))
 {
+    Write-Verbose $import.fullname
     Try
     {
         . $import.fullname
@@ -19,6 +20,11 @@ Foreach($import in @($Public + $Private + $Classes))
 # Update this section as needed.
 # - Read in or create an initial config file and variable
 # - Set variables visible to the module and its functions only
+
+if($null -eq $env:SIMPLESETTINGS_CONFIG_FILE -or $env:SIMPLESETTINGS_CONFIG_FILE -eq "") {
+    Set-SimpleSettingConfigurationFile -Path "$env:USERPROFILE\scripts\systemconfiguration.json"
+    Write-Verbose -Message "Configuration File set to '$env:SIMPLESETTINGS_CONFIG_FILE'"
+}
 
 # This only exports the public functions and nothing else.
 Export-ModuleMember -Function $Public.Basename

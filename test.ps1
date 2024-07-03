@@ -6,7 +6,6 @@ Set-Location $PSScriptRoot
 
 "`n`tSTATUS: Testing with PowerShell $PSVersion`n"
 
-
 Import-Module Pester -force
 
 $config = [PesterConfiguration]::Default

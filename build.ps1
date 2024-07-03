@@ -15,10 +15,10 @@ $moduleName = $buildconfiguration.moduleName
 
 $manifestPath = "$PSScriptRoot\$moduleName.psd1"
 
-Write-Host "Validating Manifest..."
+Write-Output "Validating Manifest..."
 $manifest = Test-ModuleManifest -Path $manifestPath
 
-Write-Host "Updating Version..."
+Write-Output "Updating Version..."
 if (-not $SemVer) {
     $SemVer = gitversion -showvariable SemVer
 }
@@ -85,13 +85,15 @@ Update-ModuleManifest @Params
 
 
 # Create new markdown and XML help files
-Write-Information "Building new function documentation"
+Write-Output "Building new function documentation"
 Import-Module -Name "$PSScriptRoot\$moduleName.psm1" -Force
 Get-Module $moduleName | Out-Null
-Write-Information "Updating markdown based help"
+Write-Output "Updating markdown based help"
+Remove-Item "$PSScriptRoot\docs\*" -Force -ErrorAction SilentlyContinue | Out-Null
+Remove-Item "$PSScriptRoot\en-US\*" -Force -ErrorAction SilentlyContinue | Out-Null
 New-MarkdownHelp -Module $moduleName -OutputFolder .\docs -ErrorAction SilentlyContinue
 Update-MarkdownHelp "$PSScriptRoot\docs"
-Write-Information "Building new xml file for help"
+Write-Output "Building new xml file for help"
 New-ExternalHelp -Path "$PSScriptRoot\docs" -OutputPath "$PSScriptRoot\en-US\" -Force
 
 # Package for Publish

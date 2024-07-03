@@ -4,6 +4,6 @@ function Get-SettingsAsObject {
         [Parameter()]
         [String] $ConfigFile = $null
     )
-    $ConfigFile = Get-SimpleSettingConfigurationFile -override $ConfigFile
+    $ConfigFile = Get-SimpleSettingConfigurationFile -Path $ConfigFile
     return (Get-Content $ConfigFile -Raw | ConvertFrom-Json)
 }

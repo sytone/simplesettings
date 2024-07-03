@@ -22,6 +22,9 @@ Foreach($import in @($Public + $Private + $Classes))
 # - Set variables visible to the module and its functions only
 
 if($null -eq $env:SIMPLESETTINGS_CONFIG_FILE -or $env:SIMPLESETTINGS_CONFIG_FILE -eq "") {
+    if($null -eq $env:USERPROFILE) {
+        $env:USERPROFILE = $PSScriptRoot
+    }
     Set-SimpleSettingConfigurationFile -Path "$env:USERPROFILE\scripts\systemconfiguration.json"
     Write-Verbose -Message "Configuration File set to '$env:SIMPLESETTINGS_CONFIG_FILE'"
 }

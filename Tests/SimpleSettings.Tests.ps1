@@ -7,7 +7,6 @@ BeforeAll {
     $testJson = "$PSScriptRoot\test-config.json"
     "{}" > $testJson
     Start-Sleep -Seconds 1
-
 }
 
 Describe "GetSetSimpleSetting" {
@@ -229,3 +228,27 @@ Describe "Configuration file" {
     }
 }
 
+Describe "Get strings with expansion" {
+    Context "When there is a environment variable" {
+
+        It "sets a string value with env and parses out" {
+            Set-SimpleSetting -Name "stringwithenvtoexpand" -Value "`$env:COMPUTERNAME" -ConfigFile $testJson
+            (Get-SimpleSetting -Name "stringwithenvtoexpand" -ConfigFile $testJson -ExpandVariables) | Should -Be "$env:COMPUTERNAME"
+        }
+
+        It "sets a string value with env and does not expand" {
+            Set-SimpleSetting -Name "stringwithenvtokeep" -Value "`$env:COMPUTERNAME" -ConfigFile $testJson
+            (Get-SimpleSetting -Name "stringwithenvtokeep" -ConfigFile $testJson) | Should -Be "`$env:COMPUTERNAME"
+        }
+
+        It "sets a string value with variable and does not expand" {
+            Set-SimpleSetting -Name "stringwithvartoexpand" -Value "`$fredsmith" -ConfigFile $testJson
+            (Get-SimpleSetting -Name "stringwithvartoexpand" -ConfigFile $testJson -ExpandVariables) | Should -Be "`$fredsmith"
+        }
+
+        It "sets a string value with variable and does not expand" {
+            Set-SimpleSetting -Name "stringwithvartokeep" -Value "`$fredsmith" -ConfigFile $testJson
+            (Get-SimpleSetting -Name "stringwithvartokeep" -ConfigFile $testJson) | Should -Be "`$fredsmith"
+        }
+    }
+}

@@ -23,6 +23,9 @@
 .PARAMETER AsJson
     If the output should be in JSON format. Otherwise it is the object.
 
+.PARAMETER ExpandVariables
+    If the output should be expanded if it contains environment variables.
+
 .INPUTS
     None
 
@@ -47,15 +50,16 @@ function Get-SimpleSetting {
         [Parameter()]
         [String] $ConfigFile = $null,
         [switch] $MachineSpecific,
-        [switch] $AsJson
+        [switch] $AsJson,
+        [switch] $ExpandVariables
     )
 
-    $settingsOutput = @{}
+    $settingsOutput = $null
     $configuration = Get-SettingsAsObject -ConfigFile $ConfigFile
 
     Write-Verbose -Message "output '$($configuration | ConvertTo-Json -Compress -Depth 10)'"
 
-    if($MachineSpecific -and $Name -ne "" -and $null -ne $Name) {
+    if ($MachineSpecific -and $Name -ne "" -and $null -ne $Name) {
         $Name = "$env:COMPUTERNAME-$Name"
     }
 
@@ -63,48 +67,34 @@ function Get-SimpleSetting {
     $sectionNameExists = $null -ne $configuration.$Section.$Name
     $nameExists = $null -ne $configuration.$Name
 
+    # Nothing is specified, return the whole configuration
     if ($Section -eq "" -and $Name -eq "") {
         $settingsOutput = $configuration
-        if($AsJson) {
-            return ($settingsOutput | ConvertTo-Json)
-        } else {
-            return $settingsOutput
-        }
-    }
-
-    #Name not found, section if Name = ""?
-    if ($sectionExists -and $Name -eq "") {
+    } elseif ($sectionExists -and $Name -eq "") {
+        #Section exists and there is no name, return the entire section.
         $settingsOutput = $configuration.$Section
-        if($AsJson) {
-            return ($settingsOutput | ConvertTo-Json)
-        } else {
-            return $settingsOutput
-        }
-    }
-
-
-    if ($sectionNameExists) {
+    } elseif ($sectionNameExists) {
+        #Section and name exists, return the value.
         $settingsOutput = $configuration.$Section.$Name
-        if($AsJson) {
-            return ($settingsOutput | ConvertTo-Json)
-        } else {
-            return $settingsOutput
-        }
-    }
-
-    if ($nameExists) {
+    } elseif ($nameExists) {
+        #Name exists off the root of the document, return the value.
         $settingsOutput = $configuration.$Name
-        if($AsJson) {
-            return ($settingsOutput | ConvertTo-Json)
-        } else {
-            return $settingsOutput
-        }
+    } elseif ( $null -eq $settingsOutput) {
+        #Nothing was found, return the default value.
+        $settingsOutput = $DefaultValue
     }
 
-    $settingsOutput = $DefaultValue
-    if($AsJson) {
+    if ($AsJson) {
         return ($settingsOutput | ConvertTo-Json)
     } else {
+        if($null -eq $settingsOutput) {
+            return $null
+        }
+        if($settingsOutput.GetType().Name -eq 'String' -and $ExpandVariables) {
+            if ($settingsOutput.Contains("`$env:")) {
+                $settingsOutput = Invoke-Expression -Command "`"$settingsOutput`""
+            }
+        }
         return $settingsOutput
     }
 }

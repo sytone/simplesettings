@@ -6,6 +6,11 @@ Set-Location $PSScriptRoot
 
 "`n`tSTATUS: Testing with PowerShell $PSVersion`n"
 
+Remove-Item "$PSScriptRoot\PesterResults_PS*.xml" -Force -ErrorAction SilentlyContinue | Out-Null
+Remove-Item "$PSScriptRoot\TestResults_PS*.xml" -Force -ErrorAction SilentlyContinue | Out-Null
+Remove-Item "$PSScriptRoot\Tests\test-config.*" -Force -ErrorAction SilentlyContinue | Out-Null
+
+
 Import-Module Pester -force
 
 $config = [PesterConfiguration]::Default
@@ -52,10 +57,12 @@ if ($FailedCount -gt 0) {
     Format-List
 }
 $Results = $null
-Remove-Item "$PSScriptRoot\PesterResults_PS*.xml" -Force -ErrorAction SilentlyContinue | Out-Null
-Remove-Item "$PSScriptRoot\TestResults_PS*.xml" -Force -ErrorAction SilentlyContinue | Out-Null
-Remove-Item "$PSScriptRoot\Tests\test-config.*" -Force -ErrorAction SilentlyContinue | Out-Null
+
 
 if ($FailedCount -gt 0) {
     throw "$FailedCount tests failed."
+} else {
+    Remove-Item "$PSScriptRoot\PesterResults_PS*.xml" -Force -ErrorAction SilentlyContinue | Out-Null
+    Remove-Item "$PSScriptRoot\TestResults_PS*.xml" -Force -ErrorAction SilentlyContinue | Out-Null
+    Remove-Item "$PSScriptRoot\Tests\test-config.*" -Force -ErrorAction SilentlyContinue | Out-Null
 }

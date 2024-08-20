@@ -14,7 +14,7 @@ Get a setting from the settings file.
 
 ```
 Get-SimpleSetting [[-Name] <String>] [[-Section] <String>] [[-DefaultValue] <Object>] [[-ConfigFile] <String>]
- [-MachineSpecific] [-AsJson] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-MachineSpecific] [-AsJson] [-ExpandVariables] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,6 +112,21 @@ Accept wildcard characters: False
 ### -AsJson
 If the output should be in JSON format.
 Otherwise it is the object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandVariables
+If the output should be expanded if it contains environment variables.
 
 ```yaml
 Type: SwitchParameter

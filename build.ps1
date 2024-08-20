@@ -20,7 +20,7 @@ $manifest = Test-ModuleManifest -Path $manifestPath
 
 Write-Output "Updating Version..."
 if (-not $SemVer) {
-    $SemVer = gitversion -showvariable SemVer
+    throw "Missing updated version!"
 }
 Write-Output "Old Version: $($manifest.Version)"
 Write-Output "New Version: $SemVer"

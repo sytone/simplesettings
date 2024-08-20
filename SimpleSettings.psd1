@@ -12,7 +12,7 @@
 RootModule = 'SimpleSettings.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.9'
+ModuleVersion = '1.0.14'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'

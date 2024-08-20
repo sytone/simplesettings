@@ -80,8 +80,8 @@ Update-ModuleManifest @Params
 
 (Get-Content -Path $manifestPath) -replace "PSGet_$moduleName", $moduleName | Set-Content -Path $manifestPath
 (Get-Content -Path $manifestPath) -replace 'NewManifest', $moduleName | Set-Content -Path $manifestPath
-# (Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
-# (Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
+(Get-Content -Path $manifestPath) -replace 'FunctionsToExport = ', 'FunctionsToExport = @(' | Set-Content -Path $manifestPath -Force
+(Get-Content -Path $manifestPath) -replace "$($functionList[-1])'", "$($functionList[-1])')" | Set-Content -Path $manifestPath -Force
 
 
 # Create new markdown and XML help files

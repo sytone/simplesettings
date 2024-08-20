@@ -1,13 +1,1 @@
-mode: Mainline
-branches:
-  main:
-    increment: Patch
-  pull-request:
-    tag: rc
-    increment: Patch
-  features:
-    increment: Patch
-    regex: .*?/
-    source-branches:
-      - main
-      - features
+workflow: GitHubFlow/v1
